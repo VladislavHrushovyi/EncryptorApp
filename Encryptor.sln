@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.ConsoleApp", "Encryptor.ConsoleApp\Encryptor.ConsoleApp.csproj", "{0DDB340B-F3BC-4B31-933C-6F149F0B73B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Domain", "Encryptor.Domain\Encryptor.Domain.csproj", "{2C7415B0-0F64-43C8-86C5-5C7A1D4CC613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Application", "Encryptor.Application\Encryptor.Application.csproj", "{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Infrastructure", "Encryptor.Infrastructure\Encryptor.Infrastructure.csproj", "{3AA86C66-645A-4273-900B-1CAA62C3FC02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DDB340B-F3BC-4B31-933C-6F149F0B73B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDB340B-F3BC-4B31-933C-6F149F0B73B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDB340B-F3BC-4B31-933C-6F149F0B73B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDB340B-F3BC-4B31-933C-6F149F0B73B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C7415B0-0F64-43C8-86C5-5C7A1D4CC613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C7415B0-0F64-43C8-86C5-5C7A1D4CC613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C7415B0-0F64-43C8-86C5-5C7A1D4CC613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C7415B0-0F64-43C8-86C5-5C7A1D4CC613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA86C66-645A-4273-900B-1CAA62C3FC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA86C66-645A-4273-900B-1CAA62C3FC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA86C66-645A-4273-900B-1CAA62C3FC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA86C66-645A-4273-900B-1CAA62C3FC02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
