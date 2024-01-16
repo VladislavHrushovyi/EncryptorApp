@@ -23,4 +23,12 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Encryptor.Application\Encryptor.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Encryptor.Application\Encryptor.Application.csproj" />
+    </ItemGroup>
+
 </Project>
