@@ -1,19 +1,20 @@
 ﻿using System.Text;
+using Encryptor.Application.Features.Logger;
 
 namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
-public class VigenereEncryption : IEncryptor
+public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
 {
     private readonly string _secretKey = "secretkey";
+
     public string Encrypt(string originalText)
     {
         var gamma = GetRepeatKey(originalText.Length);
         var sbResult = new StringBuilder();
         var alphabetSize = 26;
         int gammaIndex = 0;
-        for (int i = 0; i < originalText.Length; i++)
+        foreach (var letter in originalText)
         {
-            var letter = originalText[i];
             if (!char.IsLetter(letter))
             {
                 sbResult.Append(letter);
@@ -33,6 +34,10 @@ public class VigenereEncryption : IEncryptor
             }
         }
 
+        foreach (var logger in loggers)
+        {
+            logger.Log($"Vigenere cipher, original message: \'{originalText}\', encrypted text: \'{sbResult}\'");
+        }
         return sbResult.ToString();
     }
     
