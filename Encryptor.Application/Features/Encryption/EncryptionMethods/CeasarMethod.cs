@@ -1,10 +1,12 @@
 ﻿using System.Text;
+using Encryptor.Application.Features.Logger;
 
 namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
-public class CaesarMethod : IEncryptor
+public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
 {
     private readonly int _key = 3;
+    
     public string Encrypt(string originalText)
     {
         var sb = new StringBuilder();
@@ -13,7 +15,11 @@ public class CaesarMethod : IEncryptor
         {
             sb.Append(EncryptChar(symbol));
         }
-
+        
+        foreach (var logger in _loggers)
+        {
+            logger.Log($"Caesar cipher, original message: \'{originalText}\', encrypted text: \'{sb}\'");
+        }
         return sb.ToString();
     }
 
