@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Common\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Encryptor.Domain\Encryptor.Domain.csproj" />
     </ItemGroup>
 

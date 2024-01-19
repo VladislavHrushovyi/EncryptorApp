@@ -25,6 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Encryptor.Application\Encryptor.Application.csproj" />
+      <ProjectReference Include="..\Encryptor.Infrastructure\Encryptor.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

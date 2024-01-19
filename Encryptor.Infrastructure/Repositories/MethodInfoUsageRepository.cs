@@ -1,18 +1,19 @@
 ﻿using Encryptor.Application.Repositories;
 using Encryptor.Domain.Entities;
+using Encryptor.Infrastructure.Common.Utils;
 
 namespace Encryptor.Infrastructure.Repositories;
 
 public class MethodInfoUsageRepository : IMethodInfoUsage
 {
-    private List<Dictionary<string, MethodUsage>> _usagesList;
+    private Dictionary<string, MethodUsage> _usagesList;
 
     public MethodInfoUsageRepository()
     {
-        // read from file data of usage methods
+        _usagesList = AppDataSerialization.ReadDataFromFile();
     }
     
-    public IEnumerable<MethodUsage> GetFullInfo()
+    public Dictionary<string, MethodUsage> GetFullInfo()
     {
         throw new NotImplementedException();
     }
@@ -30,5 +31,10 @@ public class MethodInfoUsageRepository : IMethodInfoUsage
     public void AddMessageInfo(string methodName, HistoryItem historyItem)
     {
         throw new NotImplementedException();
+    }
+
+    public void SaveChanges()
+    {
+        AppDataSerialization.Serialization(_usagesList);
     }
 }
