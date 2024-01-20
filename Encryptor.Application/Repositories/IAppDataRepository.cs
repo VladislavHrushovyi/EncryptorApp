@@ -2,11 +2,10 @@
 
 namespace Encryptor.Application.Repositories;
 
-public interface IMethodInfoUsage
+public interface IAppDataRepository
 {
     public Dictionary<string, MethodUsage> GetFullInfo();
-    public MethodUsage GetInfoByMethodName();
-    public void AddMethodUsage();
+    public MethodUsage GetInfoByMethodName(string methodName);
     public void AddMessageInfo(string methodName, HistoryItem historyItem);
 
     public void SaveChanges();
