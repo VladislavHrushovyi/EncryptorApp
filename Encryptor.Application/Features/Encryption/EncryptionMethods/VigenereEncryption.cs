@@ -1,11 +1,16 @@
-﻿using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
+using Encryptor.Application.Common.Attributes;
 using Encryptor.Application.Features.Logger;
 
 namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
 public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
 {
-    private readonly string _secretKey = "secretkey";
+    [DefaultValue<string>("secretkey")]
+    private readonly string _secretKey;
+
+    private string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_secretKey));
 
     public string Encrypt(string originalText)
     {
@@ -43,7 +48,7 @@ public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
     
     private string GetRepeatKey(int originalTextLength)
     {
-        var key = _secretKey;
+        var key = Key;
         var repeatedKey = new StringBuilder(originalTextLength);
 
         for (int i = 0; i < originalTextLength; i++)

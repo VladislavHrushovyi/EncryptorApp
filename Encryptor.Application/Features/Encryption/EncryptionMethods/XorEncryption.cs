@@ -1,12 +1,15 @@
 ﻿using System.Text;
+using Encryptor.Application.Common.Attributes;
 using Encryptor.Application.Features.Logger;
 
 namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
 public class XorEncryption(IEnumerable<IAppLogger> _loggers) : IEncryptor
 {
+    [DefaultValue<string>("qwerty")]
     private readonly string _key = "qwerty";
-    
+
+    protected string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_key));
     public string Encrypt(string originalText)
     {
         var currentKey = GetRepeatKey(originalText.Length);
@@ -26,7 +29,7 @@ public class XorEncryption(IEnumerable<IAppLogger> _loggers) : IEncryptor
 
     private string GetRepeatKey(int textLength)
     {
-        var resKey = _key;
+        var resKey = Key;
         while (resKey.Length < textLength)
         {
             resKey += resKey;

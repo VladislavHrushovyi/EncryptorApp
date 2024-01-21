@@ -1,12 +1,16 @@
 ﻿using System.Text;
+using Encryptor.Application.Common.Attributes;
 using Encryptor.Application.Features.Logger;
 
 namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
 public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
 {
-    private readonly int _key = 3;
-    
+    [DefaultValue<int>("3")] // add name property from settings file
+    private readonly int _key;
+
+    private int Key => ValueFromAttribute.GetValueFromAttribute<int>(this, nameof(_key));
+
     public string Encrypt(string originalText)
     {
         var sb = new StringBuilder();
@@ -31,6 +35,6 @@ public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
         }
         
         char d = char.IsUpper(symbol) ? 'A' : 'a';  
-        return (char)((((symbol + _key) - d) % 26) + d);  
+        return (char)((((symbol + Key) - d) % 26) + d);  
     }
 }
