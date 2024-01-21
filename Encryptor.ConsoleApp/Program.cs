@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Encryptor.ConsoleApp;
 
-Console.WriteLine("Hello, World!");
+var human = new Human();
+Console.WriteLine(human.Name);
+human.ShowName();
