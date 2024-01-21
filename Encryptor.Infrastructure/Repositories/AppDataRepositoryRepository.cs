@@ -7,7 +7,7 @@ namespace Encryptor.Infrastructure.Repositories;
 
 public class AppDataRepositoryRepository : IAppDataRepository
 {
-    private Dictionary<string, MethodUsage> _usagesList = AppDataSerialization.ReadDataFromFile();
+    private readonly Dictionary<string, MethodUsage> _usagesList = AppDataSerialization.ReadDataFromFile();
 
     public Dictionary<string, MethodUsage> GetFullInfo()
     {
