@@ -7,7 +7,7 @@ namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 public class XorEncryption(IEnumerable<IAppLogger> _loggers) : IEncryptor
 {
     [DefaultValue<string>("qwerty")]
-    private readonly string _key = "qwerty";
+    private readonly string _key;
 
     protected string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_key));
     public string Encrypt(string originalText)

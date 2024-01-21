@@ -2,10 +2,14 @@
 
 public class FileLogger : IAppLogger
 {
+    private readonly object lockObj = new();
     private readonly string _pathToLogFile = "./Log.txt";
     public void Log(string info)
     {
-        using var writer = File.AppendText(_pathToLogFile);
-        writer.Write(info.AsEnumerable());
+        lock (lockObj)
+        {
+            using var writer = File.AppendText(_pathToLogFile);
+            writer.Write(info.AsEnumerable());   
+        }
     }
 }
