@@ -1,3 +1,3 @@
-﻿ceaser.key=3
+﻿caesar.key=3
 vigenere.key=secretkey
 xor.key=qwerty

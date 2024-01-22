@@ -6,7 +6,7 @@ namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
 public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
 {
-    [DefaultValue<int>("3")] // add name property from settings file
+    [DefaultValue<int>("caesar.key")] // add name property from settings file
     private readonly int _key;
 
     private int Key => ValueFromAttribute.GetValueFromAttribute<int>(this, nameof(_key));

@@ -7,7 +7,7 @@ namespace Encryptor.Application.Features.Encryption.EncryptionMethods;
 
 public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
 {
-    [DefaultValue<string>("secretkey")]
+    [DefaultValue<string>("vigenere.key")]
     private readonly string _secretKey;
 
     private string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_secretKey));
