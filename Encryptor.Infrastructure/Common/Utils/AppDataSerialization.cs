@@ -57,6 +57,7 @@ public class AppDataSerialization
 
         lock (lockObj)
         {
+            File.Delete(_path);
             if (!File.Exists(_path))
             { 
                 stream = File.Create(_path);
