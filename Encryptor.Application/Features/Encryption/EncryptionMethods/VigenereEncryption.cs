@@ -12,6 +12,8 @@ public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
 
     private string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_secretKey));
 
+    public string MethodName { get; } = "Vigenere";
+
     public string Encrypt(string originalText)
     {
         var gamma = GetRepeatKey(originalText.Length);
@@ -41,7 +43,7 @@ public class VigenereEncryption(IEnumerable<IAppLogger> loggers) : IEncryptor
 
         foreach (var logger in loggers)
         {
-            logger.Log($"Vigenere cipher, original message: \'{originalText}\', encrypted text: \'{sbResult}\'");
+            logger.Log($"Vigenere cipher, original message: \'{originalText}\', encrypted text: \'{sbResult}\' \n");
         }
         return sbResult.ToString();
     }

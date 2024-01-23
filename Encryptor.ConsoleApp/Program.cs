@@ -1,5 +1,10 @@
-﻿using Encryptor.ConsoleApp;
+﻿using Encryptor.Application.Features.Logger;
+using Encryptor.Application.Repositories;
+using Encryptor.ConsoleApp;
+using Encryptor.Infrastructure.Repositories;
 
-var human = new Human();
-Console.WriteLine(human.Name);
-human.ShowName();
+List<IAppLogger> _loggers = new() { new ConsoleLogger(), new FileLogger() };
+IAppDataRepository dataRepository = new AppDataRepositoryRepository();
+
+ApplicationMenu appMenu = new ApplicationMenu(dataRepository, _loggers);
+appMenu.Start();

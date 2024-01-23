@@ -11,6 +11,8 @@ public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
 
     private int Key => ValueFromAttribute.GetValueFromAttribute<int>(this, nameof(_key));
 
+    public string MethodName { get; } = "Caesar";
+
     public string Encrypt(string originalText)
     {
         var sb = new StringBuilder();
@@ -22,7 +24,7 @@ public class CaesarMethod(IEnumerable<IAppLogger> _loggers) : IEncryptor
         
         foreach (var logger in _loggers)
         {
-            logger.Log($"Caesar cipher, original message: \'{originalText}\', encrypted text: \'{sb}\'");
+            logger.Log($"Caesar cipher, original message: \'{originalText}\', encrypted text: \'{sb}\' \n");
         }
         return sb.ToString();
     }

@@ -10,6 +10,8 @@ public class XorEncryption(IEnumerable<IAppLogger> _loggers) : IEncryptor
     private readonly string _key;
 
     protected string Key => ValueFromAttribute.GetValueFromAttribute<string>(this, nameof(_key));
+    public string MethodName { get; } = "Xor";
+
     public string Encrypt(string originalText)
     {
         var currentKey = GetRepeatKey(originalText.Length);
@@ -21,7 +23,7 @@ public class XorEncryption(IEnumerable<IAppLogger> _loggers) : IEncryptor
 
         foreach (var logger in _loggers)
         {
-            logger.Log($"Xor cipher, original message: \'{originalText}\', encrypted text: \'{sbResult}\'");
+            logger.Log($"Xor cipher, original message: \'{originalText}\', encrypted text: \'{sbResult}\' \n");
         }
 
         return sbResult.ToString();
