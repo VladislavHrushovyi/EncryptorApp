@@ -9,6 +9,9 @@ public class DefaultValue<T>(string key) : Attribute
 
     static DefaultValue()
     {
+        if (!File.Exists("D:\\Project\\Encryptor\\Encryptor.Application\\ApplicationSettings.txt"))
+            throw new AppSettingDoesNotExist("ApplicationSettings.txt not found");
+        
         var settingsString =
             File.ReadAllLines("D:\\Project\\Encryptor\\Encryptor.Application\\ApplicationSettings.txt");
 

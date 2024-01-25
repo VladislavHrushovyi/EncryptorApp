@@ -41,7 +41,7 @@ public class EncryptionScenario(IAppDataRepository dataRepository, List<IAppLogg
     private void DoEncryption(IEncryptor encryptionCipher)
     {
         Console.WriteLine("Enter the text:");
-        string text = Console.ReadLine()!;
+        string text = Console.ReadLine() ?? throw new ArgumentException("Text for encryption must be not empty");
 
         var result = encryptionCipher.Encrypt(text);
         var historyItem = new HistoryItem()
