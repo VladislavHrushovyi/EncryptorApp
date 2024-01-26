@@ -1,0 +1,6 @@
+@Encryptor.WebApi_HostAddress = http://localhost:5129
+
+GET {{Encryptor.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
