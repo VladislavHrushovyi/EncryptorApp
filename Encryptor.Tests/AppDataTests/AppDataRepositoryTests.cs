@@ -14,7 +14,7 @@ public class AppDataRepositoryTests
     public void AddHistoryItem()
     {
         File.Delete(Environment.CurrentDirectory + @"\AppData.json");
-        IAppDataRepository appDataRepository = new AppDataRepositoryRepository();
+        IAppDataRepository appDataRepository = new AppDataRepository();
         string originalMessage = "Hello World";
         HistoryItem historyItem = new HistoryItem()
         {
@@ -42,7 +42,7 @@ public class AppDataRepositoryTests
     public void AddMultipleSameHistoryItems()
     {
         File.Delete(Environment.CurrentDirectory + @"\AppData.json");
-        IAppDataRepository appDataRepository = new AppDataRepositoryRepository();
+        IAppDataRepository appDataRepository = new AppDataRepository();
         string originalMessage = "Hello World";
         HistoryItem historyItem = new HistoryItem()
         {
@@ -74,7 +74,7 @@ public class AppDataRepositoryTests
     {
         File.Delete(Environment.CurrentDirectory + @"\AppData.json");
         Dictionary<string, string> encryptes = new Dictionary<string, string>();
-        IAppDataRepository appDataRepository = new AppDataRepositoryRepository();
+        IAppDataRepository appDataRepository = new AppDataRepository();
         string originalMessage = "Hello World";
         for (int i = 0; i < 5; i++)
         {

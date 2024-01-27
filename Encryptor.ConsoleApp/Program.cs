@@ -4,7 +4,7 @@ using Encryptor.ConsoleApp;
 using Encryptor.Infrastructure.Repositories;
 
 List<IAppLogger> _loggers = new() { new ConsoleLogger(), new FileLogger() };
-IAppDataRepository dataRepository = new AppDataRepositoryRepository();
+IAppDataRepository dataRepository = new AppDataRepository();
 
 ApplicationMenu appMenu = new ApplicationMenu(dataRepository, _loggers);
 appMenu.Start();
