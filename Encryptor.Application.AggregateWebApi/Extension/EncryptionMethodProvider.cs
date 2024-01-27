@@ -1,4 +1,5 @@
-﻿using Encryptor.Application.Features.Encryption.EncryptionMethods;
+﻿using Encryptor.Application.AggregateWebApi.Features.Encrypt.MethodAggregators;
+using Encryptor.Application.Features.Encryption.EncryptionMethods;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Encryptor.Application.AggregateWebApi.Extension;
@@ -9,17 +10,17 @@ public static class EncryptionMethodProvider
 {
     public static void AddEncryptionMethods(this IServiceCollection services)
     {
-        services.AddTransient<CaesarMethod>();
-        services.AddTransient<XorEncryption>();
-        services.AddScoped<VigenereEncryption>();
+        services.AddScoped<CaesarEncryptionAggregator>();
+        services.AddScoped<XorEncryptionAggregator>();
+        services.AddScoped<VigenereEncryptionAggregator>();
 
-        services.AddTransient<EncryptionMethodResolver>(serviceProvider => key =>
+        services.AddScoped<EncryptionMethodResolver>(serviceProvider => key =>
             {
                 return (key switch
                 {
-                    "Caesar" => serviceProvider.GetService<CaesarMethod>(),
-                    "Xor" => serviceProvider.GetService<XorEncryption>(),
-                    "Vigenere" => serviceProvider.GetService<VigenereEncryption>(),
+                    "Caesar" => serviceProvider.GetService<CaesarEncryptionAggregator>()?.Cipher,
+                    "Xor" => serviceProvider.GetService<XorEncryptionAggregator>()?.Cipher,
+                    "Vigenere" => serviceProvider.GetService<VigenereEncryptionAggregator>()?.Cipher,
                     _ => throw new KeyNotFoundException(message: $"{key} not found")
                 })!;
             }

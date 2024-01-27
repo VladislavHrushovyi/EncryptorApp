@@ -9,6 +9,8 @@ public static class ServiceProvider
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
+        services.AddLoggers();
+        services.AddEncryptionMethods();
         services.AddScoped<IAppDataRepository, AppDataRepository>();
         services.AddScoped<EncryptService>();
     }

@@ -1,9 +1,10 @@
+using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+using Encryptor.WebApi.Extension.ServiceHandler;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddServices();
 
 var app = builder.Build();
 
@@ -16,6 +17,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => "HELLO WORLD!");
+app.MapPost("/encryption", (EncryptRequest req, [FromServices] EncryptService service) 
+    => service.ExecuteEncryption(req));
 
 app.Run();
