@@ -1,0 +1,24 @@
+{
+  "Xor": {
+    "MethodName": "Xor",
+    "AmountUsage": 0,
+    "History": []
+  },
+  "Caesar": {
+    "MethodName": "Caesar",
+    "AmountUsage": 0,
+    "History": []
+  },
+  "Vigenere": {
+    "MethodName": "Vigenere",
+    "AmountUsage": 2,
+    "History": [
+      {
+        "OriginalMessage": "Hello world",
+        "EncryptedMessage": "Zincs pyvjv",
+        "DateTime": "01/28/2024 15:43:39",
+        "AmountEncrypted": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 
+Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 

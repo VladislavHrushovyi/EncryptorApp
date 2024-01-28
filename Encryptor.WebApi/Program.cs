@@ -1,4 +1,5 @@
 using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+using Encryptor.WebApi.Extension.Endpoints;
 using Encryptor.WebApi.Extension.ServiceHandler;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/encryption", (EncryptRequest req, [FromServices] EncryptService service) 
-    => service.ExecuteEncryption(req));
+app.MapGroup("")
+    .AddEncryptionEndpoints()
+    .WithTags("Encryption endpoints");
 
 app.Run();
