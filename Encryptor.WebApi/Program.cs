@@ -22,4 +22,8 @@ app.MapGroup("")
     .AddEncryptionEndpoints()
     .WithTags("Encryption endpoints");
 
+app.MapGroup("information")
+    .AddInformationEndpoints()
+    .WithTags("Information endpoints");
+
 app.Run();

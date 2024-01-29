@@ -1,4 +1,5 @@
 ﻿using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+using Encryptor.Application.AggregateWebApi.Features.Information.GetFullInfo;
 using Encryptor.Application.Repositories;
 using Encryptor.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +14,6 @@ public static class ServiceProvider
         services.AddEncryptionMethods();
         services.AddScoped<IAppDataRepository, AppDataRepository>();
         services.AddScoped<EncryptService>();
+        services.AddScoped<GetFullInfoHandler>();
     }
 }
