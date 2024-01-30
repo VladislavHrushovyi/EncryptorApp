@@ -1,2 +1,6 @@
 Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 
 Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 
+Xor cipher, original message: 'Hello world!!!!!', encrypted text: '9	YXPVDS' 
+Caesar cipher, original message: 'Hello world!!!!!', encrypted text: 'Khoor zruog!!!!!' 
+Caesar cipher, original message: 'Hello world!!!!!', encrypted text: 'Khoor zruog!!!!!' 
+Xor cipher, original message: 'Hello world!!!!!', encrypted text: '9	YXPVDS' 

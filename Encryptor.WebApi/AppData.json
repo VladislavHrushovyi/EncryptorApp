@@ -1,13 +1,27 @@
 {
   "Xor": {
     "MethodName": "Xor",
-    "AmountUsage": 0,
-    "History": []
+    "AmountUsage": 2,
+    "History": [
+      {
+        "OriginalMessage": "Hello world!!!!!",
+        "EncryptedMessage": "9\u0012\t\u001E\u001BY\u0006\u0018\u0017\u001E\u0010XPVDS",
+        "DateTime": "01/30/2024 16:15:19",
+        "AmountEncrypted": 2
+      }
+    ]
   },
   "Caesar": {
     "MethodName": "Caesar",
-    "AmountUsage": 0,
-    "History": []
+    "AmountUsage": 2,
+    "History": [
+      {
+        "OriginalMessage": "Hello world!!!!!",
+        "EncryptedMessage": "Khoor zruog!!!!!",
+        "DateTime": "01/30/2024 16:15:14",
+        "AmountEncrypted": 2
+      }
+    ]
   },
   "Vigenere": {
     "MethodName": "Vigenere",
