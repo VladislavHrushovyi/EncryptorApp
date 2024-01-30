@@ -1,5 +1,9 @@
 ﻿using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+using Encryptor.Application.AggregateWebApi.Features.Information.AmountUsageCiphers;
+using Encryptor.Application.AggregateWebApi.Features.Information.AmountUsageMessages;
 using Encryptor.Application.AggregateWebApi.Features.Information.GetFullInfo;
+using Encryptor.Application.AggregateWebApi.Features.Information.GetMethodUsageInfo;
+using Encryptor.Application.AggregateWebApi.Features.Information.InformationOfAllMessages;
 using Encryptor.Application.Repositories;
 using Encryptor.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +19,9 @@ public static class ServiceProvider
         services.AddScoped<IAppDataRepository, AppDataRepository>();
         services.AddScoped<EncryptService>();
         services.AddScoped<GetFullInfoHandler>();
+        services.AddScoped<GetMethodUsageInfoHandler>();
+        services.AddScoped<AmountOfUsageCiphersHandler>();
+        services.AddScoped<AmountOfUsageMessagesHandler>();
+        services.AddScoped<InformationOfAllMessagesHandler>();
     }
 }
