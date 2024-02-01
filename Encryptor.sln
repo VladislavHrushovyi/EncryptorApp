@@ -6,13 +6,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Domain", "Encrypt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Application", "Encryptor.Application\Encryptor.Application.csproj", "{D9660ACC-726E-47EC-A5D8-B4CBAC3BC5C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Infrastructure", "Encryptor.Infrastructure\Encryptor.Infrastructure.csproj", "{3AA86C66-645A-4273-900B-1CAA62C3FC02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Infrastructure.LocalStorage", "Encryptor.Infrastructure.LocalStorage\Encryptor.Infrastructure.LocalStorage.csproj", "{3AA86C66-645A-4273-900B-1CAA62C3FC02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Tests", "Encryptor.Tests\Encryptor.Tests.csproj", "{344C6BFD-E47C-4379-9F6A-86134C385A63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.WebApi", "Encryptor.WebApi\Encryptor.WebApi.csproj", "{A3C912D4-0F9B-4EDA-A149-6F8A35ACE5FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Application.AggregateWebApi", "Encryptor.Application.AggregateWebApi\Encryptor.Application.AggregateWebApi.csproj", "{0BE8D3AF-1925-4B58-802D-479FA4F24D9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryptor.Infrastructure.PostgreSql", "Encryptor.Infrastructure.PostgreSql\Encryptor.Infrastructure.PostgreSql.csproj", "{32BA29FA-8C59-4621-AB5F-3FECF1647600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +50,9 @@ Global
 		{0BE8D3AF-1925-4B58-802D-479FA4F24D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BE8D3AF-1925-4B58-802D-479FA4F24D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BE8D3AF-1925-4B58-802D-479FA4F24D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32BA29FA-8C59-4621-AB5F-3FECF1647600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32BA29FA-8C59-4621-AB5F-3FECF1647600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32BA29FA-8C59-4621-AB5F-3FECF1647600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32BA29FA-8C59-4621-AB5F-3FECF1647600}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

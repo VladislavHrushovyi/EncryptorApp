@@ -25,7 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Encryptor.Application\Encryptor.Application.csproj" />
-      <ProjectReference Include="..\Encryptor.Infrastructure\Encryptor.Infrastructure.csproj" />
+      <ProjectReference Include="..\Encryptor.Infrastructure.LocalStorage\Encryptor.Infrastructure.LocalStorage.csproj" />
     </ItemGroup>
 
     <ItemGroup>
