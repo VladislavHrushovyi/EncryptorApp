@@ -1,11 +1,12 @@
 using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+using Encryptor.WebApi.Extension.DbProviders;
 using Encryptor.WebApi.Extension.Endpoints;
 using Encryptor.WebApi.Extension.ServiceHandler;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddServices();
+builder.Services.AddServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -15,7 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MigrationDatabase();
 app.UseHttpsRedirection();
 
 app.MapGroup("")
