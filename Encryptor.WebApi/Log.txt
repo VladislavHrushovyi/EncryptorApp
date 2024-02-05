@@ -4,3 +4,32 @@ Xor cipher, original message: 'Hello world!!!!!', encrypted text: '9	YXP
 Caesar cipher, original message: 'Hello world!!!!!', encrypted text: 'Khoor zruog!!!!!' 
 Caesar cipher, original message: 'Hello world!!!!!', encrypted text: 'Khoor zruog!!!!!' 
 Xor cipher, original message: 'Hello world!!!!!', encrypted text: '9	YXPVDS' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Caesar cipher, original message: 'Allo', encrypted text: 'Door' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Caesar cipher, original message: 'Allo', encrypted text: 'Door' 
+Caesar cipher, original message: 'Allo', encrypted text: 'Door' 
+Caesar cipher, original message: 'Hello world', encrypted text: 'Khoor zruog' 
+Caesar cipher, original message: 'Hello world', encrypted text: 'Khoor zruog' 
+Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 
+Vigenere cipher, original message: 'Hello world', encrypted text: 'Zincs pyvjv' 
+Xor cipher, original message: 'Allo', encrypted text: '0	' 
+Xor cipher, original message: 'Allo', encrypted text: '0	' 
+Xor cipher, original message: 'Hello world', encrypted text: '9	Y' 
+Caesar cipher, original message: 'Allo', encrypted text: 'Door' 
+Caesar cipher, original message: 'Allo', encrypted text: 'Door' 
+Caesar cipher, original message: 'Hello World', encrypted text: 'Khoor Zruog' 
+Caesar cipher, original message: 'Hello World', encrypted text: 'Khoor Zruog' 
+Vigenere cipher, original message: 'Hello World', encrypted text: 'Zincs Pyvjv' 
+Vigenere cipher, original message: 'Hello World', encrypted text: 'Zincs Pyvjv' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Vigenere cipher, original message: 'Allo', encrypted text: 'Spnf' 
+Xor cipher, original message: 'Allo', encrypted text: '0	' 
+Xor cipher, original message: 'Allo', encrypted text: '0	' 
+Xor cipher, original message: 'Hello World', encrypted text: '9	Y&' 
+Xor cipher, original message: 'Hello World', encrypted text: '9	Y&' 

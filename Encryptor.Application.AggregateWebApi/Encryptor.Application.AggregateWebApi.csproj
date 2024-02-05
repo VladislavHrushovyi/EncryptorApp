@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Encryptor.Infrastructure.LocalStorage\Encryptor.Infrastructure.LocalStorage.csproj" />
+      <ProjectReference Include="..\Encryptor.Infrastructure.PostgreSql\Encryptor.Infrastructure.PostgreSql.csproj" />
     </ItemGroup>
 
 </Project>

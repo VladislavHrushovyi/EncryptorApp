@@ -10,8 +10,12 @@ public static class Extension
 {
     public static void AddPostgreSql(this IServiceCollection services, IConfiguration config)
     {
-        services.AddNpgsql<AppDataContext>(config["ConnectionString:EncryptorDb"]);
-        services.AddScoped<AppDataContext>();
+        Console.WriteLine(config.GetConnectionString("EncryptorDb"));
+        services.AddNpgsql<AppDataContext>(config.GetConnectionString("EncryptorDb"), builder =>
+        {
+            builder.MigrationsAssembly("Encryptor.WebApi");
+        });
+        services.AddDbContext<AppDataContext>();
         services.AddScoped<IAppDataRepository, MethodUsageRepository>();
     }
 }

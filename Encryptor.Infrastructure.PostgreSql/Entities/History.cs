@@ -5,4 +5,6 @@ public class History : BaseEntity
     public string OriginalText { get; set; }
     public string EncryptedText { get; set; }
     public DateTime CreatedAt { get; set; }
+
+    public int CiphersId { get; set; }
 }

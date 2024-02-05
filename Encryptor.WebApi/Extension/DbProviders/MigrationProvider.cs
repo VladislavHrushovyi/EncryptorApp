@@ -9,14 +9,6 @@ public static class MigrationProvider
     {
         var scope = app.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetService<AppDataContext>();
-
-        if (!dbContext.Database.EnsureCreated())
-        {
-            dbContext.Database.Migrate();
-        }
-        else
-        {
-            dbContext.Database.Migrate();
-        }
+        dbContext.Database.EnsureCreated();
     }
 }

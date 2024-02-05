@@ -5,7 +5,7 @@ using Encryptor.Application.AggregateWebApi.Features.Information.GetFullInfo;
 using Encryptor.Application.AggregateWebApi.Features.Information.GetMethodUsageInfo;
 using Encryptor.Application.AggregateWebApi.Features.Information.InformationOfAllMessages;
 using Encryptor.Application.Repositories;
-using Encryptor.Infrastructure.Repositories;
+using Encryptor.Infrastructure.PostgreSql.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Encryptor.Application.AggregateWebApi.Extension;
@@ -16,7 +16,7 @@ public static class ServiceProvider
     {
         services.AddLoggers();
         services.AddEncryptionMethods();
-        services.AddScoped<IAppDataRepository, AppDataRepository>();
+        services.AddScoped<IAppDataRepository, MethodUsageRepository>();
         services.AddScoped<EncryptService>();
         services.AddScoped<GetFullInfoHandler>();
         services.AddScoped<GetMethodUsageInfoHandler>();

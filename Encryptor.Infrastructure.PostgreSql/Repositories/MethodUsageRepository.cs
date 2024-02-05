@@ -18,58 +18,86 @@ public class MethodUsageRepository : IAppDataRepository
 
     private void InitCiphers()
     {
-        var ciphersName = new string[] {"Xor, Caesar, Vigenere"};
-        if (!_context.Ciphers.Any())
+        if (_context.Ciphers.Any()) return;
+        var ciphers = new[] {"Xor", "Caesar", "Vigenere"}.Select(x => new Ciphers()
         {
-            _context.Ciphers.AddRange(
-                    ciphersName.Select(x => new Ciphers()
-                    {
-                        AmountUsage = 0,
-                        Name = x,
-                        UpdateAt = DateTime.Now
-                    })
-                );
-        }
+            AmountUsage = 0,
+            Name = x,
+            UpdateAt = DateTime.UtcNow
+        }).ToList();
+        _context.Ciphers.AddRange(ciphers);
+        _context.SaveChanges();
     }
 
     public Dictionary<string, MethodUsage> GetFullInfo()
     {
-        return new Dictionary<string, MethodUsage>();
+        var result = new Dictionary<string, MethodUsage>();
+        var ciphers = _context.Ciphers.Include(x => x.History).ToList();
+        foreach (var cipher in ciphers)
+        {
+            result.Add(cipher.Name, new MethodUsage()
+            {
+                AmountUsage = cipher.AmountUsage,
+                MethodName = cipher.Name,
+                History = cipher.History.DistinctBy(x => x.OriginalText)
+                    .Select(historyItem => new HistoryItem()
+                    {
+                        OriginalMessage = historyItem.OriginalText,
+                        DateTime = _context.History.OrderBy(x => x.CreatedAt)
+                            .Last(x => x.CreatedAt == historyItem.CreatedAt)
+                            .CreatedAt.ToString(CultureInfo.InvariantCulture),
+                        EncryptedMessage = historyItem.EncryptedText,
+                        AmountEncrypted = _context.History.Count(x => x.OriginalText == historyItem.OriginalText &&
+                                                                      x.CiphersId == cipher.Id)
+                    })
+                    .ToList()
+            });
+        }
+
+        return result;
     }
 
     public MethodUsage GetInfoByMethodName(string methodName)
     {
-        var cipherByName = _context.Ciphers.First(x => x.Name == methodName);
+        var cipherByName = _context.Ciphers.Include(ciphers => ciphers.History).First(x => x.Name == methodName);
 
         var result = new MethodUsage()
         {
             AmountUsage = cipherByName.AmountUsage,
             MethodName = cipherByName.Name,
-            History = cipherByName.History.Select(x => new HistoryItem()
-            {
-                OriginalMessage = x.OriginalText,
-                DateTime = x.CreatedAt.ToString(CultureInfo.InvariantCulture),
-                EncryptedMessage = x.EncryptedText,
-                AmountEncrypted = 1
-            }).ToList()
+            History = cipherByName.History.DistinctBy(x => x.OriginalText)
+                .Select(historyItem => new HistoryItem()
+                {
+                    OriginalMessage = historyItem.OriginalText,
+                    DateTime = _context.History.OrderBy(x => x.CreatedAt)
+                        .Last(x => x.CreatedAt == historyItem.CreatedAt)
+                        .CreatedAt.ToString(CultureInfo.InvariantCulture),
+                    EncryptedMessage = historyItem.EncryptedText,
+                    AmountEncrypted = _context.History.Count(x => x.OriginalText == historyItem.OriginalText 
+                                                                        && x.CiphersId == cipherByName.Id)
+                })
+                .ToList()
         };
         return result;
     }
 
     public void SaveChanges()
     {
-        throw new NotImplementedException();
+        _context.SaveChanges();
     }
 
     public void AddMessageInfo(string methodName, HistoryItem historyItem)
     {
-        var cipherData = _context.Ciphers.First(x => x.Name == methodName);
+        var cipherData = _context.Ciphers
+            .Include(x => x.History)
+            .First(x => x.Name == methodName);
         cipherData.AmountUsage += 1;
         cipherData.History.Add(new History()
         {
-            CreatedAt = DateTime.Now,
+            CreatedAt = DateTime.UtcNow,
             EncryptedText = historyItem.EncryptedMessage,
             OriginalText = historyItem.OriginalMessage
         });
+        _context.SaveChanges();
     }
 }
