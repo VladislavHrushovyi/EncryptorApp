@@ -3,6 +3,7 @@ using Encryptor.Application.Repositories;
 using Encryptor.Domain.Entities;
 using Encryptor.Infrastructure.PostgreSql.DataContext;
 using Encryptor.Infrastructure.PostgreSql.Entities;
+using Encryptor.Infrastructure.PostgreSql.Entities.MapExtension;
 using Microsoft.EntityFrameworkCore;
 
 namespace Encryptor.Infrastructure.PostgreSql.Repositories;
@@ -35,23 +36,7 @@ public class MethodUsageRepository : IAppDataRepository
         var ciphers = _context.Ciphers.Include(x => x.History).ToList();
         foreach (var cipher in ciphers)
         {
-            result.Add(cipher.Name, new MethodUsage()
-            {
-                AmountUsage = cipher.AmountUsage,
-                MethodName = cipher.Name,
-                History = cipher.History.DistinctBy(x => x.OriginalText)
-                    .Select(historyItem => new HistoryItem()
-                    {
-                        OriginalMessage = historyItem.OriginalText,
-                        DateTime = _context.History.OrderBy(x => x.CreatedAt)
-                            .Last(x => x.CreatedAt == historyItem.CreatedAt)
-                            .CreatedAt.ToString(CultureInfo.InvariantCulture),
-                        EncryptedMessage = historyItem.EncryptedText,
-                        AmountEncrypted = _context.History.Count(x => x.OriginalText == historyItem.OriginalText &&
-                                                                      x.CiphersId == cipher.Id)
-                    })
-                    .ToList()
-            });
+            result.Add(cipher.Name, cipher.ToMethodUsage());
         }
 
         return result;
@@ -61,23 +46,7 @@ public class MethodUsageRepository : IAppDataRepository
     {
         var cipherByName = _context.Ciphers.Include(ciphers => ciphers.History).First(x => x.Name == methodName);
 
-        var result = new MethodUsage()
-        {
-            AmountUsage = cipherByName.AmountUsage,
-            MethodName = cipherByName.Name,
-            History = cipherByName.History.DistinctBy(x => x.OriginalText)
-                .Select(historyItem => new HistoryItem()
-                {
-                    OriginalMessage = historyItem.OriginalText,
-                    DateTime = _context.History.OrderBy(x => x.CreatedAt)
-                        .Last(x => x.CreatedAt == historyItem.CreatedAt)
-                        .CreatedAt.ToString(CultureInfo.InvariantCulture),
-                    EncryptedMessage = historyItem.EncryptedText,
-                    AmountEncrypted = _context.History.Count(x => x.OriginalText == historyItem.OriginalText 
-                                                                        && x.CiphersId == cipherByName.Id)
-                })
-                .ToList()
-        };
+        var result = cipherByName.ToMethodUsage();
         return result;
     }
 
