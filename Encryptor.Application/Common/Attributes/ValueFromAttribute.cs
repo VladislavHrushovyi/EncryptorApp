@@ -9,4 +9,12 @@ public class ValueFromAttribute
             typeof(DefaultValue<T>));
         return attribute.Value;
     }
+    
+    public static T GetValueFromAttribute<T>(Type type, string propertyName)
+    {
+        DefaultValue<T> attribute = (DefaultValue<T>)Attribute.GetCustomAttribute(
+            type.GetProperty(propertyName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance),
+            typeof(DefaultValue<T>));
+        return attribute.Value;
+    }
 }

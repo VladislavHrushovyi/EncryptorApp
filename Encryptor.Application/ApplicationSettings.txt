@@ -1,3 +1,4 @@
 ﻿caesar.key=3
 vigenere.key=secretkey
 xor.key=qwerty
+type_storage=database
