@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Encryptor.Application.AggregateWebApi.Features.Encrypt;
+﻿using Encryptor.Application.AggregateWebApi.Features.Encrypt;
 using Encryptor.Application.AggregateWebApi.Features.Information.AmountUsageCiphers;
 using Encryptor.Application.AggregateWebApi.Features.Information.AmountUsageMessages;
 using Encryptor.Application.AggregateWebApi.Features.Information.GetFullInfo;
@@ -32,10 +31,7 @@ public static class ServiceProvider
 
     private static void HandleStorage(IServiceCollection serviceCollection)
     {
-        var attribute = (DefaultValue<string>)typeof(ServiceProvider)
-            .GetField(nameof(TypeStorage))!
-            .GetCustomAttribute(typeof(DefaultValue<string>));
-        var attributeValue = attribute.Value;
+        var attributeValue = ValueFromAttribute.GetValueFromAttribute(typeof(ServiceProvider), nameof(TypeStorage));
         if (string.IsNullOrEmpty(attributeValue))
         {
             serviceCollection.AddScoped<IAppDataRepository, MethodUsageRepository>();

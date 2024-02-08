@@ -1,4 +1,6 @@
-﻿namespace Encryptor.Application.Common.Attributes;
+﻿using System.Reflection;
+
+namespace Encryptor.Application.Common.Attributes;
 
 public class ValueFromAttribute
 {
@@ -10,11 +12,11 @@ public class ValueFromAttribute
         return attribute.Value;
     }
     
-    public static T GetValueFromAttribute<T>(Type type, string propertyName)
+    public static string GetValueFromAttribute(Type type, string propertyName)
     {
-        DefaultValue<T> attribute = (DefaultValue<T>)Attribute.GetCustomAttribute(
-            type.GetProperty(propertyName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance),
-            typeof(DefaultValue<T>));
+        var attribute = (DefaultValue<string>)type
+            .GetField(propertyName)!
+            .GetCustomAttribute(typeof(DefaultValue<string>));
         return attribute.Value;
     }
 }
